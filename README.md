@@ -14,10 +14,18 @@
 - O arquivo ``main.java`` e o reponsavel por receber a requisicao do navegador e enviar a resposta html ou String 
 
 ## Executando Localmente		
-Entre na pasta do projeto pelo terminal e digite:		
+Entre na pasta do projeto pelo terminal :		
+- selecione a branch exemplo1
 ```sh		
-$ mvn clean install		
-$ heroku local web		
+$ git checkout exemplo1
+```
+- Compile 
+```sh		
+$ mvn clean install				
+```
+- Start 
+```sh		
+$ heroku local web				
 ```
 ## Testando
 Abra o navegador e acesse
