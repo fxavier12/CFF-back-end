@@ -10,7 +10,10 @@ do projeto Controle Financeiro Facil da disciplina de oficina de Integracao
 
 ## Site
 
-A aplicacao beta esta online no dominio controlefinanceirofacil.tk
+A aplicacao em desenvolcimento esta online no dominio 
+
+[cffbackend.herokuapp.com](cffbackend.herokuapp.com)
+
 
 
 ## Hambiente de desenvolvimento 
