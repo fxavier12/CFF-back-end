@@ -13,3 +13,4 @@
 	  <!--Mapeamento de classes-->
 	  <mapping class="model.Usuario"/>
  </session-factory>
+</hibernate-configuration>
