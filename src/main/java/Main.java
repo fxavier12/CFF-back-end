@@ -1,9 +1,7 @@
-import java.util.HashMap;
-import java.util.Map;
 import spark.*;
-
+import java.io.File;
 import static spark.Spark.*;
-import spark.template.freemarker.FreeMarkerEngine;
+import org.apache.commons.io.IOUtils;
 
 public class Main {
 
@@ -20,11 +18,10 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
 
     //index page
-    get("/", (request, response) -> {
-	Map<String, Object> attributes = new HashMap<>();
-        return new ModelAndView(attributes, "index.ftl");
-    }, new FreeMarkerEngine());
+    get("/", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/index.html")));
    
+
   }
+  
 
 }

@@ -1,9 +1,7 @@
 import static spark.Spark.*;
 import spark.*;
 import org.json.simple.JSONObject;
-import spark.template.freemarker.FreeMarkerEngine;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.commons.io.IOUtils;
 
 /*
  * LoginApi
@@ -32,10 +30,13 @@ public class LoginApi{
 		});
 
 		//Login Page 
-		get("/Login",(req,res) ->{
-			Map<String, Object> attributes = new HashMap<>();
-	        return new ModelAndView(attributes, "login.ftl");
-    	}, new FreeMarkerEngine());
+		get("/login",(req,res) -> 
+			IOUtils.toString(Spark.class.getResourceAsStream("/login.html")));
+
+
+		//Sgn Up Page 
+		get("/cadastro",(req,res) -> 
+			IOUtils.toString(Spark.class.getResourceAsStream("/cadastro.html")));
 
 		//Cadastro de Usuarios 
 		post("/cadastro",(req,res) -> {
