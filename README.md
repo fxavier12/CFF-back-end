@@ -23,7 +23,7 @@ Para rodar a aplicacao voce vai precisar :
 - Maven 
 - Heroku cli 
 
-para detelhes sobre a instacao leia o arquivo [Instalacao](Instalacao.md)
+para detelhes sobre a instacao leia o arquivo [Instalacao](https://github.com/fxavier12/CFF-back-end/blob/master/instalacao.md)
 
 
 ## Clonando o Projeto
@@ -48,5 +48,21 @@ $ heroku local web
 ``localhost:5000/hello``
 
 ## Branchs
+Para editar os arquivos crie uma nova branch
+
+```sh
+git checkout -b nomedabranch
+```
+Para salvar as alteracoes feitas localmente no git 
+
+```sh
+git push nomedabranch
+```
+Para adicionar novas funcionalidades a branch master envio um pull request
+
+```sh
+git pull
+```
 
 ## Exemplos 
+Foram criadas algumas branchs de exemplos de funcionalidades.
