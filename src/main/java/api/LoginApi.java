@@ -1,7 +1,12 @@
+package api;
+
+
 import static spark.Spark.*;
 import spark.*;
 import org.json.simple.JSONObject;
 import org.apache.commons.io.IOUtils;
+import model.*;
+import dao.*;
 
 /*
  * LoginApi
@@ -79,13 +84,39 @@ public class LoginApi{
 				  return resposta.toJSONString();
 			 }
 
-			JSONObject resposta = new JSONObject();
-			resposta.put("mensagem :", "Usuario criado com sucesso!");
-			return resposta.toJSONString();
+			 //verificando se ja existe usuario cadastrado com esse email
 
+ 			Usuario user ;
+            UsuarioDAO userDAO = new UsuarioDAO();
+            //procurando usurio com esse endereco de email
+            user = userDAO.loadByEmail(email);
+
+
+            if( user.Getemail() != null){
+            	   //ja existe usuario cadastrado com esse email
+            	  System.out.println("Bad Request from IP: "+req.ip());
+				  res.status(400);//400 -> bad requested
+				  JSONObject resposta = new JSONObject();
+				  resposta.put("mensagem :", "O email informado ja esta em uso ");
+				  return resposta.toJSONString();
+            }else{
+            	  //cria um novo usuario
+            	  user = new Usuario(nome,email,senha);
+            }
+
+
+            //salvando novo usuario no banco e gerando o ID
+
+            try{
+                     userDAO.save(user);
+             }catch(Exception ex){
+                    System.out.println("Ocorreu um erro ao salvar");
+             }
+           
+
+            return user.toJSON().toJSONString();
 		
 				
 		});
 	}
 }
-
