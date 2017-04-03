@@ -15,7 +15,7 @@
 				params.senha= document.getElementById("senha").value;
 				params.email = document.getElementById("email").value;
 				//requisicao POST
-				$.post( "https://cffbackend.herokuapp.com/login", { email: params.email, senha: params.senha)
+				$.post( "https://cffbackend.herokuapp.com/login", { email: params.email, senha: params.senha})
 			  		.done(function( data ) {
 			   		 alert( "Data Loaded: " + data );
 			  	});
@@ -77,7 +77,6 @@
 	</style>
 </head>
 
-  <link rel="stylesheet" type="text/css" href="CSS/estilo.css"> 
 
 <body >
 
