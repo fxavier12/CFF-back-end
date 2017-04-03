@@ -51,18 +51,30 @@ $ heroku local web
 Para editar os arquivos crie uma nova branch
 
 ```sh
-git checkout -b nomedabranch
+$ git checkout -b nomedabranch
 ```
 Para salvar as alteracoes feitas localmente no git 
 
 ```sh
-git push nomedabranch
+$ git add .
+$ git commit -a -m 'Meu Commit'
+$ git push origin nomedabranch
 ```
-Para adicionar novas funcionalidades a branch master envio um pull request
+Para adicionar novas funcionalidades a branch master envie um pull request
 
-```sh
-git pull
-```
 
 ## Exemplos 
+
 Foram criadas algumas branchs de exemplos de funcionalidades.
+
+Para ver as branchs do projeto 
+
+```sh
+$ git branch -a
+```
+
+Para selecionar uma branch 
+
+```sh
+$ git checkout nomedabranch
+```
