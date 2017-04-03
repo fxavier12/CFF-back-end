@@ -1,6 +1,6 @@
 # Back-end Controle Financeiro Facil
 
-Web Service REST em java utilizando Maven 
+WebREST em java utilizando Maven 
 Hospedado  no Heroku 
  
 ## Sobre a aplicacao
