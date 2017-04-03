@@ -5,9 +5,9 @@
 <hibernate-configuration>
  <session-factory >
 	  <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property><!--DRIVER JDBC-->
-	  <property name="hibernate.connection.url">jdbc:mysql://if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/qs12pmls1r2tqqur</property><!--URL DO BANCO-->
-	  <property name="hibernate.connection.username">xe0fqqxh2iaxsuw7</property><!--Usuario-->
-	  <property name="hibernate.connection.password">g6dz36msk86x7rkn</property><!--Senha-->
+	  <property name="hibernate.connection.url">jdbc:mysql://if0ck476y7axojpg.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/y5sswnmeol351zhd</property><!--URL DO BANCO-->
+	  <property name="hibernate.connection.username">z5h17vy3w2xk18ie</property><!--Usuario-->
+	  <property name="hibernate.connection.password">hnam6n31pfk9igum</property><!--Senha-->
 	  <property name="hibernate.show_sql">true</property><!--LOG-->
 	  <property name="hibernate.hbm2ddl.auto">update</property><!--Criar as tabelas automaticamente-->
 	  <!--Mapeamento de classes-->
