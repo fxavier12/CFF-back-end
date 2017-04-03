@@ -12,10 +12,10 @@
 				///valores de input
 				var params ={};
 
-				params.nome = document.getElementById("nome").value;
+				params.senha= document.getElementById("senha").value;
 				params.email = document.getElementById("email").value;
 				//requisicao POST
-				$.post( "https://cffbackend.herokuapp.com/login", { nome: params.nome, email: params.email})
+				$.post( "https://cffbackend.herokuapp.com/login", { email: params.email, senha: params.senha)
 			  		.done(function( data ) {
 			   		 alert( "Data Loaded: " + data );
 			  	});
