@@ -23,7 +23,7 @@ Para rodar a aplicacao voce vai precisar :
 - Maven 
 - Heroku cli 
 
-para detelhes sobre a instacao leia o arquivo ``Instalacao.md``
+para detelhes sobre a instacao leia o arquivo [Instalacao](Instalacao.md)
 
 
 ## Clonando o Projeto
