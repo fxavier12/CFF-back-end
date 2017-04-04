@@ -52,7 +52,7 @@ public class LoginApi{
 			 	  System.out.println("Bad Request from IP: "+req.ip());
 				  res.status(400);//400 -> bad requested
 				  JSONObject resposta = new JSONObject();
-				  resposta.put("mensagem ", "o campo email deve ser informado");
+				  resposta.put("mensagem", "o campo email deve ser informado");
 				  return resposta.toJSONString();
 			 }
 
@@ -62,7 +62,7 @@ public class LoginApi{
 			 	  System.out.println("Bad Request from IP: "+req.ip());
 				  res.status(400);//400 -> bad requested
 				  JSONObject resposta = new JSONObject();
-				  resposta.put("mensagem ", "O campo nome deve ser informado");
+				  resposta.put("mensagem", "O campo nome deve ser informado");
 				  return resposta.toJSONString();
 			 }
 
@@ -71,7 +71,7 @@ public class LoginApi{
 			 	  System.out.println("Bad Request from IP: "+req.ip());
 				  res.status(400);//400 -> bad requested
 				  JSONObject resposta = new JSONObject();
-				  resposta.put("mensagem ", "O campo senha  deve ser informado");
+				  resposta.put("mensagem", "O campo senha  deve ser informado");
 				  return resposta.toJSONString();
 			 }
 
@@ -88,7 +88,7 @@ public class LoginApi{
             	  System.out.println("Bad Request from IP: "+req.ip());
 				  res.status(400);//400 -> bad requested
 				  JSONObject resposta = new JSONObject();
-				  resposta.put("mensagem ", "O email informado ja esta em uso ");
+				  resposta.put("mensagem","O email informado ja esta em uso ");
 				  return resposta.toJSONString();
             }else{
             	  //cria um novo usuario
