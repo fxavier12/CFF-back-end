@@ -34,15 +34,6 @@ public class LoginApi{
 			return "login solicitado";
 		});
 
-		//Login Page 
-		get("/login",(req,res) -> 
-			IOUtils.toString(Spark.class.getResourceAsStream("/login.html")));
-
-
-		//Sgn Up Page 
-		get("/cadastro",(req,res) -> 
-			IOUtils.toString(Spark.class.getResourceAsStream("/cadastro.html")));
-
 		//Cadastro de Usuarios 
 		post("/cadastro",(req,res) -> {
 			//HEADER
