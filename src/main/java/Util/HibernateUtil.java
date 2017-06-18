@@ -1,3 +1,10 @@
+/* 
+* HibernateUtil 
+* carrega o arquivo de configuracao do hibernate 
+* e gerencia a sessao com o banco
+*
+*/
+
 package Util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -8,23 +15,25 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            // Create the SessionFactory from hibernate.cfg.xml
+            // criar uma nova sessao 
             return new AnnotationConfiguration().configure("hibernate.xml").buildSessionFactory();
-
         }
         catch (Throwable ex) {
-            // Make sure you log the exception, as it might be swallowed
+            // erro ao criar a sessao 
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
 
+
+    //retorna a sessao atual 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
+
+    //fecha a sessao atual 
     public static void shutdown() {
-        // Close caches and connection pools
         getSessionFactory().close();
     }
 

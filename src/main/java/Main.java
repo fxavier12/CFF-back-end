@@ -8,21 +8,18 @@ public class Main {
 
   public static void main(String[] args) {
       
-     //define a porta do heroku
-    port(Integer.valueOf(System.getenv("PORT")));
+    //define a porta do heroku
+    //  port(Integer.valueOf(System.getenv("PORT")));
+  	port(8798);
     //files
     staticFileLocation("/public");
 
     //rota de login
     LoginApi login = new LoginApi();
-    //get hello localhost:5000/hello 
-    get("/hello", (req, res) -> "Hello World");
-
+   
     //index page
     get("/", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/index.html")));
-   
-
+    get("/login", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/login.html")));
+    get("/cadastro", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/cadastro.html")));
   }
-  
-
 }

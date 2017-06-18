@@ -1,3 +1,9 @@
+/*
+* MODEL Usuario 
+* Anatocoes para ser utilizada com o ORM  Hibernate
+* 
+*/
+
 package model;
 
 import javax.persistence.*;
@@ -9,7 +15,7 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @Table(name="Usuario")
 public class Usuario{
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private Long id;
@@ -20,18 +26,19 @@ public class Usuario{
 	@Column(name = "senha", nullable = false, length = 16)
 	private String senha;
 
-	
-
 	public Usuario(){
 
 	}
 
 	public Usuario(String nome,String email,String senha){
-			this.nome = nome;
-			this.email = email;
-			this.senha = senha;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
 	}
 
+
+
+	//gets
 	public String Getnome(){
 		return nome;
 	}
@@ -44,14 +51,17 @@ public class Usuario{
 		return id;
 	}
 
-	public void Setid(long id){
-		this.id = id;
-	}
-
 	public String Getsenha(){
 		return senha;
 	}
 
+	//sets
+
+	public void Setid(long id){
+		this.id = id;
+	}
+
+	//retorna o Usuario em formato JSON 
 	public JSONObject toJSON(){
 		JSONObject obj = new JSONObject();
 		obj.put("id",id);
