@@ -9,8 +9,8 @@ public class Main {
   public static void main(String[] args) {
       
     //define a porta do heroku
-    //  port(Integer.valueOf(System.getenv("PORT")));
-  	port(8798);
+     port(Integer.valueOf(System.getenv("PORT")));
+  	//port(8798);
     //files
     staticFileLocation("/public");
 
