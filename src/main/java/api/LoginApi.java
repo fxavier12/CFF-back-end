@@ -34,7 +34,6 @@ public class LoginApi{
 		//Login de Usuarios 
 		post("/login",(req,res) -> {
 			//HEADER
-			res.header("Access-Control-Allow-Origin", "*");
 			res.type("application/json");
 
 
@@ -100,7 +99,6 @@ public class LoginApi{
 		//Cadastro de Usuarios 
 		post("/cadastro",(req,res) -> {
 			//HEADER
-			res.header("Access-Control-Allow-Origin", "*");
 			res.type("application/json");
 
 			//get valores
