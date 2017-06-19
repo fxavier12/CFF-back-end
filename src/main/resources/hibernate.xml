@@ -11,7 +11,8 @@
 	  <property name="hibernate.show_sql">true</property><!--LOG-->
 	  <property name="hibernate.hbm2ddl.auto">update</property><!--Criar as tabelas automaticamente-->
 	  <!--Mapeamento de classes-->
-	  <mapping class="model.Usuario"/>
 	  <mapping class="model.Conta"/>
+	  <mapping class="model.Usuario"/>
+
  </session-factory>
 </hibernate-configuration>
