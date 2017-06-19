@@ -77,7 +77,7 @@ public class ContaApi{
 			}
 
 			//todos os campos foram informados 
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Conta conta = new Conta(Long.parseLong(dono),descricao,Double.parseDouble(valor),sdf.parse(data),tipo);
 			ContaDAO contaDao = new ContaDAO();
 			
