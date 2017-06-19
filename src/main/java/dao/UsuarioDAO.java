@@ -21,12 +21,13 @@ public class UsuarioDAO{
    private Session session;
 
    public UsuarioDAO() {  
-       factory = HibernateUtil.getSessionFactory();
+       
        
    }       
   
    //cria um novo usuario 
    public void save(Usuario user) throws Exception{
+       factory = HibernateUtil.getSessionFactory();
        session = factory.openSession();  
        session.clear();
        Transaction tx = session.beginTransaction();
@@ -38,6 +39,7 @@ public class UsuarioDAO{
 
    //busca e retorna um usuario pelo id 
     public Usuario load(String id)throws Exception{  
+       factory = HibernateUtil.getSessionFactory();
        session = factory.openSession();  
        session.clear();
        Usuario user = null;
@@ -48,6 +50,7 @@ public class UsuarioDAO{
 
    //busca e retorna um usuario pelo email 
    public Usuario loadByEmail(String email){
+      factory = HibernateUtil.getSessionFactory();
       session = factory.openSession();  
       session.clear();
 
