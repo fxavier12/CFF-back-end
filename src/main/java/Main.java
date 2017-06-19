@@ -17,9 +17,5 @@ public class Main {
     //rota de login
     LoginApi login = new LoginApi();
    
-    //index page
-    get("/", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/index.html")));
-    get("/login", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/login.html")));
-    get("/cadastro", (request, response) -> IOUtils.toString(Spark.class.getResourceAsStream("/cadastro.html")));
   }
 }
