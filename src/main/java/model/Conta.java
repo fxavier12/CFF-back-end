@@ -37,6 +37,7 @@ public class Conta{
 
 	public Conta(Long dono,String descricao,Double valor,Date data,String tipo ){
 		this.dono = dono;
+		this.valor = valor;
 		this.descricao = descricao;
 		this.data = data;
 		this.tipo = tipo;
@@ -64,6 +65,10 @@ public class Conta{
 	public Date Getdata(){
 		return data;
 	}
+	public Double Getvalor(){
+		return valor;
+	}
+
 
 	//sets
 

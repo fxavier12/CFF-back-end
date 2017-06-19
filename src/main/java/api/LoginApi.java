@@ -74,8 +74,6 @@ public class LoginApi{
             	//verifica se a senha informada confere 
             	if(senha.equals(user.Getsenha())){
             		//login efetuado com sucesso 
-            		req.session(true); 
-            		req.session().attribute("logado","true");
             		return user.toJSON().toJSONString();
             	}else{
             		//a senha esta errada 
