@@ -48,15 +48,33 @@ public class ContaDAO{
        return user; 
    }  
 
-   //retorna uma lista de contas de um usuario pelo id
-   public List<Conta> loadByUser(Long id){
+   //retorna uma lista de receitas de um usuario pelo id em um determinado mes
+   public List<Conta> loadReceitas(Long id , int mes){
       factory = HibernateUtil.getSessionFactory();
       session = factory.openSession();  
       session.clear();
-      String sql = "SELECT * FROM Conta WHERE dono = ? ";
+      String sql = "SELECT * FROM Conta WHERE dono = ? AND tipo = ?";
       SQLQuery query = session.createSQLQuery(sql);
       query.addEntity(Conta.class);
       query.setLong(0, id);
+      query.setString(1, "receita");
+
+      List<Conta> results = query.list();
+      session.close();  
+      return results;
+   }
+
+   //retorna uma lista de despesas de um usuario pelo id em um determinado mes
+   public List<Conta> loadDespesas(Long id , int mes){
+      factory = HibernateUtil.getSessionFactory();
+      session = factory.openSession();  
+      session.clear();
+      String sql = "SELECT * FROM Conta WHERE dono = ? AND tipo = ?";
+      SQLQuery query = session.createSQLQuery(sql);
+      query.addEntity(Conta.class);
+      query.setLong(0, id);
+      query.setString(1, "despesa");
+
       List<Conta> results = query.list();
       session.close();  
       return results;

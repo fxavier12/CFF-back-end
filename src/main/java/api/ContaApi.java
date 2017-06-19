@@ -4,17 +4,20 @@ package api;
 import static spark.Spark.*;
 import spark.*;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.apache.commons.io.IOUtils;
 import model.*;
 import dao.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;  
+
 
 
 public class ContaApi{
 
 	public ContaApi(){
-		//Login de Usuarios 
+		//Casatro de contas
 		post("/conta",(req,res) -> {
 			//HEADER
 			res.header("Access-Control-Allow-Origin", "*");
@@ -91,6 +94,92 @@ public class ContaApi{
            
             return conta.toJSON().toJSONString();
 						
+		});
+
+		//retorna uma lista de despesas de um usuario em determinado mes 
+		post("/getreceitas",(req,res) -> {
+			//HEADER
+			res.header("Access-Control-Allow-Origin", "*");
+			res.type("application/json");
+
+
+			//get parametros 
+			String usuario = req.queryParams("usuario");
+			String mes = req.queryParams("mes");
+
+			//verificando se o parametro usuario foi enviado
+			if(usuario == null || usuario.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo usuario deve ser informado");
+				return resposta.toJSONString();
+			}
+
+			//verificando se o parametro usuario foi enviado
+			if(mes == null || mes.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo mes deve ser informado");
+				return resposta.toJSONString();
+			}
+
+			ContaDAO contaDao = new ContaDAO();
+			List<Conta> receitas =  contaDao.loadReceitas(Long.parseLong(usuario),Integer.parseInt(mes));
+			JSONArray resposta = new JSONArray();
+			
+
+			for (Conta temp : receitas) {
+				JSONObject aux = new JSONObject();
+				aux = temp.toJSON();
+				resposta.add(aux);
+			}
+			return resposta.toJSONString();
+
+		});
+
+		//retorna uma lista de despesas de um usuario em determinado mes 
+		post("/getdespesas",(req,res) -> {
+			//HEADER
+			res.header("Access-Control-Allow-Origin", "*");
+			res.type("application/json");
+
+
+			//get parametros 
+			String usuario = req.queryParams("usuario");
+			String mes = req.queryParams("mes");
+
+			//verificando se o parametro usuario foi enviado
+			if(usuario == null || usuario.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo usuario deve ser informado");
+				return resposta.toJSONString();
+			}
+
+			//verificando se o parametro usuario foi enviado
+			if(mes == null || mes.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo mes deve ser informado");
+				return resposta.toJSONString();
+			}
+
+			ContaDAO contaDao = new ContaDAO();
+			List<Conta> receitas =  contaDao.loadDespesas(Long.parseLong(usuario),Integer.parseInt(mes));
+			JSONArray resposta = new JSONArray();
+			
+
+			for (Conta temp : receitas) {
+				JSONObject aux = new JSONObject();
+				aux = temp.toJSON();
+				resposta.add(aux);
+			}
+			return resposta.toJSONString();
+
 		});
 
 	}

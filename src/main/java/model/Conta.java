@@ -9,6 +9,7 @@ package model;
 import javax.persistence.*;
 import org.json.simple.JSONObject;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -81,6 +82,9 @@ public class Conta{
 		JSONObject obj = new JSONObject();
 		obj.put("id",id);
 		obj.put("descricao",descricao);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		obj.put("data",sdf.format(data));
 		obj.put("valor",valor);
 		obj.put("dono",dono);
 		obj.put("tipo",tipo);
