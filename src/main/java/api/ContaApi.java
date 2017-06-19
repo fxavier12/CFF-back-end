@@ -128,7 +128,8 @@ public class ContaApi{
 			ContaDAO contaDao = new ContaDAO();
 			List<Conta> receitas =  contaDao.loadReceitas(Long.parseLong(usuario),Integer.parseInt(mes));
 			JSONArray resposta = new JSONArray();
-			
+			System.out.println("requisicao em despesas size : "+receitas.size());
+
 
 			for (Conta temp : receitas) {
 				JSONObject aux = new JSONObject();
@@ -171,7 +172,6 @@ public class ContaApi{
 			ContaDAO contaDao = new ContaDAO();
 			List<Conta> receitas =  contaDao.loadDespesas(Long.parseLong(usuario),Integer.parseInt(mes));
 			JSONArray resposta = new JSONArray();
-			
 
 			for (Conta temp : receitas) {
 				JSONObject aux = new JSONObject();
