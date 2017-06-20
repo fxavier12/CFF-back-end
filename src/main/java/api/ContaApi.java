@@ -17,6 +17,72 @@ import java.util.List;
 public class ContaApi{
 
 	public ContaApi(){
+		//exclui uma conta | parametros : id(Conta) , dono(usuario.id)
+		post("/excluirconta",(req,res) -> {
+			//HEADER
+			res.header("Access-Control-Allow-Origin", "*");
+			res.type("application/json");
+
+			//get parametros
+			String dono = req.queryParams("dono");
+			String id = req.queryParams("id");
+			System.out.println(req.params());
+
+			//verificando se o parametro dono foi enviado
+			if(dono == null || dono.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo dono deve ser informado");
+				return resposta.toJSONString();
+			}	
+
+
+			//verificando se o parametro id foi enviado
+			if(id == null || id.isEmpty()){
+			 	System.out.println("Bad Request from IP: "+req.ip());
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o campo id deve ser informado");
+				return resposta.toJSONString();
+			}	
+
+
+			//os parametros foram enviados com sucesso
+			ContaDAO contaDao = new ContaDAO();
+			Conta toDelete = contaDao.load(id);
+			System.out.println("existe??? "+toDelete.Getid());
+
+			if(toDelete.Getid() == null){
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "o objeto a ser excluido nao existe");
+				return resposta.toJSONString();
+			}	
+
+			//verificando se o id do dono confere
+			System.out.println("DONO : "+toDelete.Getdono());
+			if(!toDelete.Getdono().equals(Long.parseLong(dono))){
+				res.status(400);//400 -> bad requested
+				JSONObject resposta = new JSONObject();
+				resposta.put("mensagem", "voce nao pode excluir este objeto");
+				return resposta.toJSONString();
+			}
+
+			//excluindo a conta
+			try{
+				contaDao.delete(toDelete);
+
+			}catch(Exception err){
+					res.status(400);//400 -> bad requested
+					JSONObject resposta = new JSONObject();
+					resposta.put("mensagem", "nao foi possivel excluir!");
+					return resposta.toJSONString();
+			}
+			JSONObject resposta = new JSONObject();
+			resposta.put("mensagem", "objeto excluido com sucesso");
+			return resposta.toJSONString();
+		});
 		//Casatro de contas
 		post("/conta",(req,res) -> {
 			//HEADER

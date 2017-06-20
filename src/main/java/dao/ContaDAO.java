@@ -23,8 +23,18 @@ public class ContaDAO{
    public ContaDAO() {  
        
        
-   }       
-  
+   }      
+  //exclui uma conta 
+   public void delete(Conta conta) throws Exception{
+       factory = HibernateUtil.getSessionFactory();
+       session = factory.openSession();  
+       session.clear();
+       Transaction tx = session.beginTransaction();
+       session.delete(conta);  
+       tx.setTimeout(5);
+       tx.commit(); 
+       session.close();         
+   }  
    //cria uma nova conta 
    public void save(Conta conta) throws Exception{
        factory = HibernateUtil.getSessionFactory();
@@ -42,10 +52,19 @@ public class ContaDAO{
        factory = HibernateUtil.getSessionFactory();
        session = factory.openSession();  
        session.clear();
-       Conta user = null;
-       user = (Conta)session.load(Conta.class,Long.parseLong(id) );
-       session.close();   
-       return user; 
+       Conta conta = new Conta();
+       String sql = "SELECT * FROM Conta WHERE id = ? ";
+       SQLQuery query = session.createSQLQuery(sql);
+       query.addEntity(Conta.class);
+       query.setString(0, id);
+       List<Conta> results = query.list();
+       session.close();  
+        if(results.size()>0){
+           return results.get(0);
+        }else{
+           return conta;
+        }
+ 
    }  
 
    //retorna uma lista de receitas de um usuario pelo id em um determinado mes
