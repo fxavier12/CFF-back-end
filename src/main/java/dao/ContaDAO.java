@@ -31,10 +31,22 @@ public class ContaDAO{
        session.clear();
        Transaction tx = session.beginTransaction();
        session.delete(conta);  
-       tx.setTimeout(5);
+       tx.setTimeout(2);
+       tx.commit(); 
+       session.close();         
+   }   
+   //edita uma conta 
+   public void update(Conta conta) throws Exception{
+       factory = HibernateUtil.getSessionFactory();
+       session = factory.openSession();  
+       session.clear();
+       Transaction tx = session.beginTransaction();
+       session.update(conta);  
+       tx.setTimeout(2);
        tx.commit(); 
        session.close();         
    }  
+
    //cria uma nova conta 
    public void save(Conta conta) throws Exception{
        factory = HibernateUtil.getSessionFactory();
@@ -42,7 +54,7 @@ public class ContaDAO{
        session.clear();
        Transaction tx = session.beginTransaction();
        System.out.println(session.save(conta));  
-       tx.setTimeout(5);
+       tx.setTimeout(2);
        tx.commit(); 
        session.close();         
    }  

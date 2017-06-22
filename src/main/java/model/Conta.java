@@ -55,6 +55,9 @@ public class Conta{
 		return descricao;
 	}
 
+	public void setDescricao(String descricao){
+		this.descricao = descricao;
+	}
 	public String Gettipo(){
 		return tipo;
 	}
@@ -63,19 +66,25 @@ public class Conta{
 		return id;
 	}
 
+	public void Setid(long id){
+		this.id = id;
+	}
+
 	public Date Getdata(){
 		return data;
+	}
+
+	public void setData(Date data){
+		this.data = data;
 	}
 	public Double Getvalor(){
 		return valor;
 	}
 
-
-	//sets
-
-	public void Setid(long id){
-		this.id = id;
+	public void setValor(Double valor){
+		this.valor = valor;
 	}
+	//sets
 
 	//retorna a conta em formato JSON 
 	public JSONObject toJSON(){
